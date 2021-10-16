@@ -62,14 +62,14 @@ public class MainGameController : MonoBehaviour, GameObserver, PlayerStatsObserv
   }
 
   public void OnUpdateBalance(int newBalance)
-    {
-        currentBalance = newBalance;
-    }
+  {
+    currentBalance = newBalance;
+  }
 
-    public void OnUpdateOrderRate(int newOrderRate)
-    {
-        currentOrderRate = newOrderRate;
-    }
+  public void OnUpdateOrderRate(int newOrderRate)
+  {
+    currentOrderRate = newOrderRate;
+  }
 
   void OpenProductManagementScreen()
   {
