@@ -61,6 +61,16 @@ public class MainGameController : MonoBehaviour, GameObserver, PlayerStatsObserv
     currentGame.StartGame();
   }
 
+  public void OnUpdateBalance(int newBalance)
+    {
+        currentBalance = newBalance;
+    }
+
+    public void OnUpdateOrderRate(int newOrderRate)
+    {
+        currentOrderRate = newOrderRate;
+    }
+
   void OpenProductManagementScreen()
   {
     hudScreen.enabled = false;
