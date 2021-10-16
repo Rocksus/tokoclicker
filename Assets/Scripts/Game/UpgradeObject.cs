@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class UpgradeObject : MonoBehaviour
 {
-    public string UpgradeName = "";
-    public long BasePrice = 0;
-    public float PriceMultiplier = 0;
-    public int UpgradeType = 0;
-    public float UpgradeImpact = 0;
+    public static string UpgradeName = "";
+    public static long BasePrice = 0;
+    public static float PriceMultiplier = 0;
+    public static int UpgradeType = 0;
+    public static float UpgradeImpact = 0;
 
     private long currentPrice = BasePrice;
     private float currentImpact = 0;
