@@ -9,26 +9,39 @@ public class WorkerUpgrade : MonoBehaviour {
   public GameObject upgradeButton;
   public GameObject upgradeText;
 
-  public int currentBalance;
+  public GlobalStatus gs;
+  public long currentBalance;
 
-  public static int PriceMultiplier;
-  public static int UpgradePrice;
-  public static bool TurnOffButton = false;
+  public float PriceMultiplier;
+  public long UpgradePrice;
+  public bool buttonOff = false;
+
+  public void TurnOnButton() {
+    buttonOff = false;
+  }
+
+  public void TurnOffButton() {
+    buttonOff = true;
+  }
+
+  public void MultiplyPrice() {
+    UpgradePrice *= (long)PriceMultiplier;
+  }
 
   void Update() {
-    currentBalance = GlobalStatus.Balance;
-    overlayText.GetComponent<Text>.text = "Hire worker";
-    upgradeText.GetComponent<Text>.text = "Hire worker";
+    currentBalance = gs.GetBalance();
+    overlayText.GetComponent<Text>().text = "Hire worker";
+    upgradeText.GetComponent<Text>().text = "Hire worker";
 
-    if (currentBalance >= UpgradePrice && !TurnOffButton) {
+    if (currentBalance >= UpgradePrice && !buttonOff) {
       overlayButton.SetActive(false);
       upgradeButton.SetActive(true);
     }
 
-    if (TurnOffButton) {
+    if (buttonOff) {
       overlayButton.SetActive(true);
       upgradeButton.SetActive(false);
-      TurnOffButton = false;
+      buttonOff = false;
     }
   }
 }

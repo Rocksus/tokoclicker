@@ -11,10 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Main Background
+  - Main Foreground
+  - Manage Store Background
+  - Manage Store Foreground
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Main Background
+    uniqueID: 2327544405
+    locked: 0
+  - name: Main Foreground
+    uniqueID: 3039991233
+    locked: 0
+  - name: Store Background
+    uniqueID: 2700242783
+    locked: 0
+  - name: Store Foreground
+    uniqueID: 3950703717
     locked: 0

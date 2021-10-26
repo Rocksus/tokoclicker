@@ -3,26 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AutoOrder : MonoBehaviour {
-  public bool autoProcess = false;
-  public int internalOrderRate;
-  public int internalPriceMultiplier;
+  public GlobalStatus gs;
+
+  private float orderRate;
+  private int waitTime;
 
   void Update() {
-    internalOrderRate = GlobalStatus.OrderRate;
-    internalPriceMultiplier = GlobalStatus.PriceMultiplier;
-    
-    if (!autoProcess) {
-      autoProcess = true;
-      StartCoroutine(ProcessOrder());
-    }
+    orderRate = gs.GetAutoOrderRate();
+
   }
 
-  IEnumerator ProcessOrder () {
-    GlobalStatus.Balance += (internalOrderRate * internalPriceMultiplier);
+  IEnumerator ProcessOrder (float revenue, int waitTime) {
+    gs.UpdateBalance((long)(revenue), true);
   
-    yield return new WaitForSeconds(1);
-
-    autoProcess = false;
+    yield return new WaitForSeconds(waitTime);
   }
-
 }
