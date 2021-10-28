@@ -31,17 +31,14 @@ public class GlobalStatus : MonoBehaviour {
 
   // Worker
   public int WorkerCount;
-  public GameObject workerDisplay;
   public int internalWorker;
 
   // Worker efficiency
   public float WorkerEfficiency = 0.5f;
-  public GameObject workerEfficiencyDisplay;
   public float internalWorkerEfficiency;
 
   // Revenue multiplier
   public float RevenueMultiplier;
-  public GameObject revenueMultiplierDisplay;
   public float internalRevenueMultiplier;
 
   // ProductList
@@ -119,8 +116,14 @@ public class GlobalStatus : MonoBehaviour {
 
   public void UpdateBalance(long balance, bool increase) {
     if (increase) {
+      if (Balance + balance > float.MaxValue - 1) {
+        return ;
+      }
       Balance += balance;
     } else {
+      if (Balance - balance < 0) {
+        Balance = 0;
+      }
       Balance -= balance;
     }
   }
@@ -160,16 +163,13 @@ public class GlobalStatus : MonoBehaviour {
 
     // Worker
     internalWorker = WorkerCount;
-    //workerDisplay.GetComponent<Text>().text = "" + internalWorker;
 
     // Worker efficiency
     internalWorkerEfficiency = WorkerEfficiency;
-    //workerEfficiencyDisplay.GetComponent<Text>().text = "" + internalWorkerEfficiency;
 
 
     // Revenue multiplier
     internalRevenueMultiplier = RevenueMultiplier;
-    //revenueMultiplierDisplay.GetComponent<Text>().text = internalRevenueMultiplier + "x";
     }
 
   public GameObject CreateProduct(string name, long baseProductPrice, long baseUpgradePrice) {
