@@ -12,7 +12,7 @@ public class PointerObject : MonoBehaviour
     public Vector3 Position;
     public ProductObject Product;
 
-    // public AudioClip popSound;
+    public AudioClip popSound;
 
     public void SetPlaceName(string placeName) {
         this.PlaceName = placeName;
@@ -64,7 +64,7 @@ public class PointerObject : MonoBehaviour
     }
 
     public void PopPointer() {
-        // am.PlaySFX(popSound);
+        am.PlaySFX(popSound);
         this.RemovePointer();
         if (this.Product != null) {
             gs.UpdateBalance(this.Product.GetProductPrice(), true);
