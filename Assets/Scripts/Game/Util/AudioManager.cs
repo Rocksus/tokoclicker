@@ -22,6 +22,14 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    void Start() {
+        if (MusicSource != null) {
+            MusicSource.Play();
+        } else {
+            Debug.Log("Missing BGM music");
+        }
+    }
+
     public void ReplaceTrack(AudioClip clip)
     {
         if (MusicSource.clip == clip)
