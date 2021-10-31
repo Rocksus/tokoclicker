@@ -67,6 +67,10 @@ public class ProductObject : MonoBehaviour
         currentProductPrice = (long)((float)(currentProductPrice)*UpgradeMultiplier);
         gs.UpdateBalance(currentUpgradePrice, false);
         currentUpgradePrice = (long)((float)(currentUpgradePrice)*UpgradePriceMultiplier);
+
+        if (currentProductPrice > currentUpgradePrice) {
+            currentProductPrice = currentUpgradePrice * 0.8f;
+        }
         
         CurrentProfitText.GetComponent<Text>().text = ""+currentProductPrice+"/product sold";
         CurrentUpgradeText.GetComponent<Text>().text = ""+currentUpgradePrice;
